@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Metatags  -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Welcome--FUTA Campus Guide</title>
+
+    <!-- Leaflet CDNs -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin="">
+    </script>
+
+    <!-- Font awesome CDN for leaflet Locate Control library -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Geosearch control -->
+
+    <link rel="stylesheet" href='./node_modules/leaflet-geosearch/dist/geosearch.css'>
+    <script src="./node_modules/leaflet-geosearch/dist/geosearch.umd.js"></script>
+
+    <!-- Leaflet Geolocation controls support -->
+    <!-- <link rel="stylesheet" href="./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.css"> -->
+    <!-- <script src="./node_modules/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.72.0/dist/L.Control.Locate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.72.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    
+    <!-- Routing machine -->
+    <!-- <link rel="stylesheet" href="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css">
+    <script src="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script> -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.0.1/intro.min.js" integrity="sha512-Y3bwrs/uUQhiNsD26Mpr5YvfG18EY0J+aNxYI7ZQPJlM9H+lElGpuh/JURVJR/NBE+p1JZ+sVE773Un4zQcagg==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.0.1/introjs.min.css" integrity="sha512-fsq7ym+bMq7ecs277R2a3QDPxF+JIwNNnkPfj9rIKDUyqrbXDnICZj/cCLcP3bKh3+jsCBnBR7BZJShOmELL0Q==" crossorigin="anonymous" />
+    <!-- custom style -->
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    <div id="map"></div>
+    <!-- Rounded switch -->
+    <label class="switch" data-intro='Toggle to change to dark/light mode!'>
+        <input type="checkbox">
+        <span class="slider round" id='switcher'></span>
+    </label>
+
+    <div class="result" style="display: none;" id="location-found">
+        <img src="./assets/test.png">
+        <div>
+            <h3 id="location-name">Location Name</h3>
+            <h2 id='loc-address' style="font-weight: lighter; font-size: medium;">Location address</h2>
+            <p id="location-coordinate" style="font-weight: lighter;">Location Coordinate</p>
+        </div>
+    </div>
+
+    <footer id="footer-home">
+        <div class='symbol'></div>
+        <p>Where do you want to go?</p>
+    </footer>
+
+
+    <script src="./build.js"></script>
+</body>
+</html>
