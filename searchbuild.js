@@ -14104,13 +14104,14 @@ start.onchange = async (event) => {
     results.map((result,num)=>{
         stop.style.zIndex= -1;
         searchResult.innerHTML +=`<p class='result-items'>${result.label}</p>`;
+        searchResult.style.display='inline-block';
     });
  
-    searchResult.style.display='inline-block';
+    
     
     searchResult.onclick=(e)=>{
-
-        console.log(e)
+        searchResult.innerHTML='';
+        console.log(e.target.innerHTML)
     }
 };
     
