@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Metatags  -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Search page</title>
+
+    <!-- Leaflet CDNs -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin="">
+    </script>
+
+    <!-- Font awesome CDN for leaflet Locate Control library -->
+
+
+    <!-- Geosearch control -->
+
+    <link rel="stylesheet" href='./node_modules/leaflet-geosearch/dist/geosearch.css'>
+    <script src="./node_modules/leaflet-geosearch/dist/geosearch.umd.js"></script>
+
+  <!-- Routing machine -->
+  <link rel="stylesheet" href="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css">
+  <script src="./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  
+  <script type="text/javascript" src="./MovingMarker.js"></script>
+    <!-- custom style -->
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    <div id="map" style="display: none;"></div>
+   
+        <div class="container">
+            <img src="./assets/icons/back.png">
+
+            <div class="icons">
+                <img src="./assets/icons/from.png">
+                <img src="./assets/icons/divider.png">
+                <img src="./assets/icons/destination.png">
+            </div>
+
+            <div class="search-bar">
+                <input type="text" placeholder="From" id="startingPoint">
+                <div id="results">
+                </div>
+                <input type="text" placeholder="Your destination" id="destination">
+            </div>
+            <div id="change">
+                <img src="./assets/icons/change.png">
+            </div>
+           
+        </div>
+
+    <footer id="footer-search">
+        <div class='symbol'></div>
+        <p>Go home?</p>
+    </footer>
+
+    <script type="text/javascript" src="./searchbuild.js"></script>
+</body>
+</html>
