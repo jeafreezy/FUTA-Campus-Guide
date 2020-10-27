@@ -14096,12 +14096,11 @@ const provider = new OpenStreetMapProvider({
 var startResults = document.getElementById('start-results');
 
 
-start.onchange = async (event) => {
+start.oninput = async (event) => {
 
     event.preventDefault();
 
-    
-    const results = await provider.search({ query: event.target.value });
+    var results = await provider.search({ query: event.target.value });
 
     results.map((result,num)=>{
         stop.style.zIndex= -1;
@@ -14116,13 +14115,19 @@ start.onchange = async (event) => {
  
  
     startResults.onclick=(e)=>{
-        
         startResults.style.display='none';
         stop.style.display='inline-block';
         start.value = e.target.innerHTML;
         startResults.innerHTML='';
+
+        if( results.includes(e.target.innerHTML) ){
+
+            var valueLocation=results.indexOf(e.target.innerHTML)
+            
+            console.log(results[valueLocation])
+        }
     }
-    if (start.value.length === 0){
+    if (start.value.length === 0 ){
         startResults.style.display='none';
         startResults.innerHTML='';
         stop.style.display='inline-block';
@@ -14135,7 +14140,7 @@ var stopResults = document.getElementById('stop-results');
 
 //DESTINATION BLOCK
 
-stop.onchange = async (event) => {
+stop.oninput = async (event) => {
 
     event.preventDefault();
 
@@ -14257,7 +14262,7 @@ stop.onblur=()=>{
 
     setTimeout(()=>{
         stopResults.style.display='none';
-        startResults.innerHTML='';
+        stopResults.innerHTML='';
     },100)
   
 }
