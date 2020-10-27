@@ -56,8 +56,13 @@ start.onchange = async (event) => {
     if (start.value.length === 0){
         startResults.style.display='none';
         startResults.innerHTML='';
+        stop.style.display='inline-block';
     }   
+    start.onblur=()=>{
 
+        startResults.style.display='none';
+        stop.style.display='inline-block';
+    }
 };
 
 
@@ -93,6 +98,11 @@ stop.onchange = async (event) => {
     if (stop.value.length === 0){
         stopResults.style.display='none';
         stopResults.innerHTML='';
+    }
+
+    stop.onblur=()=>{
+
+        stopResults.style.display='none';
     }
 
 };
@@ -169,3 +179,4 @@ var backHome=document.getElementById('back-home');
 backHome.onclick=()=>{
     window.location.href='./index.html';
 }
+
