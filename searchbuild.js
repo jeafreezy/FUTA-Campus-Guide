@@ -14127,11 +14127,7 @@ start.onchange = async (event) => {
         startResults.innerHTML='';
         stop.style.display='inline-block';
     }   
-    start.onblur=()=>{
-
-        startResults.style.display='none';
-        stop.style.display='inline-block';
-    }
+   
 };
 
 
@@ -14157,22 +14153,19 @@ stop.onchange = async (event) => {
     });
  
  
-    stopResults.onclick=(e)=>{
+    stopResults.addEventListener('click',(e)=>{
         
         stopResults.style.display='none';
         stop.value = e.target.innerHTML;
         stopResults.innerHTML='';
-    }
+    });
 
     if (stop.value.length === 0){
         stopResults.style.display='none';
         stopResults.innerHTML='';
     }
-
-    stop.onblur=()=>{
-
-        stopResults.style.display='none';
-    }
+    
+    
 
 };
     
@@ -14249,5 +14242,23 @@ backHome.onclick=()=>{
     window.location.href='./index.html';
 }
 
+start.onblur=()=>{
 
+    setTimeout(()=>{
+        startResults.style.display='none';
+        stop.style.display='inline-block';
+        startResults.innerHTML='';
+    },100)
+   
+}
+
+
+stop.onblur=()=>{
+
+    setTimeout(()=>{
+        stopResults.style.display='none';
+        startResults.innerHTML='';
+    },100)
+  
+}
 },{"leaflet-geosearch":1}]},{},[3]);
