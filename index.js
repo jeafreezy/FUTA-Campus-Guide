@@ -12,7 +12,7 @@ let accessToken='pk.eyJ1IjoiamVhZnJlZXp5IiwiYSI6ImNrYmpicjczYjBucjIyeGxzNGRjNHMx
 var map = L.map('map',{
     zoomControl:false,
     minZoom:14,
-    zoom:18,
+    zoom:15,
     maxZoom:22,
     center:[7.302952885790951,5.138908926692239] 
 });

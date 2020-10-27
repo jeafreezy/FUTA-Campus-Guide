@@ -24,29 +24,82 @@ const provider = new OpenStreetMapProvider({
     }
 });
 
+var startResults = document.getElementById('start-results');
+
+
 start.onchange = async (event) => {
 
     event.preventDefault();
 
-    var searchResult = document.getElementById('results');
-
+    
     const results = await provider.search({ query: event.target.value });
 
     results.map((result,num)=>{
         stop.style.zIndex= -1;
-        searchResult.innerHTML +=`<p class='result-items'>${result.label}</p>`;
-        searchResult.style.display='inline-block';
+        let resultNode=document.createElement('p');
+        resultNode.classList.add('result-items');
+        var textNode=document.createTextNode(result.label);
+        resultNode.appendChild(textNode);
+        startResults.appendChild(resultNode);
+        startResults.style.display='inline-block';
+        stop.style.display='none';
     });
  
-    
-    
-    searchResult.onclick=(e)=>{
+ 
+    startResults.onclick=(e)=>{
         
-        searchResult.style.display='none';
-        console.log(e.target.innerHTML)
+        startResults.style.display='none';
+        stop.style.display='inline-block';
+        start.value = e.target.innerHTML;
+        startResults.innerHTML='';
     }
+    if (start.value.length === 0){
+        startResults.style.display='none';
+        startResults.innerHTML='';
+    }   
+
+};
+
+
+var stopResults = document.getElementById('stop-results');
+
+//DESTINATION BLOCK
+
+stop.onchange = async (event) => {
+
+    event.preventDefault();
+
+    
+    const results = await provider.search({ query: event.target.value });
+
+    results.map((result,num)=>{
+
+        let resultNode=document.createElement('p');
+        resultNode.classList.add('result-items');
+        var textNode=document.createTextNode(result.label);
+        resultNode.appendChild(textNode);
+        stopResults.appendChild(resultNode);
+        stopResults.style.display='inline-block';
+    });
+ 
+ 
+    stopResults.onclick=(e)=>{
+        
+        stopResults.style.display='none';
+        stop.value = e.target.innerHTML;
+        stopResults.innerHTML='';
+    }
+
+    if (stop.value.length === 0){
+        stopResults.style.display='none';
+        stopResults.innerHTML='';
+    }
+
 };
     
+
+
+
 // var router=L.Routing.control({
 //     waypoints: [],
 //     lineOptions: {
@@ -99,3 +152,20 @@ start.onchange = async (event) => {
 // router.on('routesfound',()=>{
 //     console.log(router.getWaypoints())
 // });
+
+
+//UTILITIES
+
+var clearSearch=document.getElementById('change');
+
+clearSearch.onclick=()=>{
+    start.value='';
+    stop.value='';
+
+}
+
+var backHome=document.getElementById('back-home');
+
+backHome.onclick=()=>{
+    window.location.href='./index.html';
+}

@@ -242,13 +242,14 @@ input:checked + .slider:before {
   line-height: 14px;
 }
 
-#results{
+#start-results{
   position: relative;
   width:200px;
   font-size: 11px;
   top:7%; 
   background-color:white; 
-  border: 1px solid white; 
+  border: 1px dashed#33085B; 
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25);
   z-index: 50;
   display: none;
   padding:5px;
@@ -256,6 +257,20 @@ input:checked + .slider:before {
 }
 .result-items{
   border:1px solid  white;
-  border: 0.5px solid rgba(189, 180, 180, 0.69);
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25);
 
+}
+
+#stop-results{
+  position: relative;
+  width:200px;
+  font-size: 11px;
+  top:7%; 
+  background-color:white; 
+  border: 1px dashed#33085B; 
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25);
+  z-index: 50;
+  display: none;
+  padding:5px;
+  list-style-type: none;
 }
