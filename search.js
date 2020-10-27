@@ -188,7 +188,7 @@ stop.onblur=()=>{
 
     setTimeout(()=>{
         stopResults.style.display='none';
-        startResults.innerHTML='';
+        stopResults.innerHTML='';
     },100)
   
 }
