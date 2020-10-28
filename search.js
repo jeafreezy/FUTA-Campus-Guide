@@ -18,9 +18,8 @@ const provider = new OpenStreetMapProvider({
     params: {
         countrycodes: 'ng',
         viewbox:[5.159025192260743,7.314114433544155,5.110745429992677,7.288488878494806],
-        email:'jolaiyaemmanuel@gmail.com',
         bounded:1,
-        limit:5
+        limit:3
     }
 });
 
