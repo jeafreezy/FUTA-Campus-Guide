@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "leaflet": "^1.7.1",
     "leaflet-geosearch": "^3.0.6",
     "leaflet-routing-machine": "^3.2.12",
     "leaflet.locatecontrol": "^0.72.0"

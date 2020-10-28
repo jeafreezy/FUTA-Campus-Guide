@@ -1,6 +1,8 @@
 
 
 const { GeoSearchControl,OpenStreetMapProvider } = require("leaflet-geosearch");
+var {} =require('leaflet');
+var {} = require('leaflet-routing-machine');
 
 var home=document.getElementById('footer-search');
 
@@ -9,6 +11,11 @@ home.onclick=()=>{
     window.location.href='./index.html'
 }
 
+var locationSearch={
+
+    start:[0,0],
+    stop:[0,0]
+}
 
 var start=document.getElementById('startingPoint');
 
@@ -33,6 +40,7 @@ start.oninput = async (event) => {
     var results = await provider.search({ query: event.target.value });
 
     results.map((result,num)=>{
+
         stop.style.zIndex= -1;
         let resultNode=document.createElement('p');
         resultNode.classList.add('result-items');
@@ -45,18 +53,27 @@ start.oninput = async (event) => {
  
  
     startResults.onclick=(e)=>{
+
         startResults.style.display='none';
+
         stop.style.display='inline-block';
+
         start.value = e.target.innerHTML;
+
         startResults.innerHTML='';
+        
+        results.map((result,num)=>{
 
-        if( results.includes(e.target.innerHTML) ){
+            if( result.label===e.target.innerHTML){
+                
+                locationSearch.start[0]=results[num].x
+                locationSearch.start[1]=results[num].y
+            }
+        })
 
-            var valueLocation=results.indexOf(e.target.innerHTML)
-            
-            console.log(results[valueLocation])
-        }
     }
+
+
     if (start.value.length === 0 ){
         startResults.style.display='none';
         startResults.innerHTML='';
@@ -93,6 +110,17 @@ stop.oninput = async (event) => {
         stopResults.style.display='none';
         stop.value = e.target.innerHTML;
         stopResults.innerHTML='';
+
+        results.map((result,num)=>{
+
+            if( result.label===e.target.innerHTML){
+                
+                locationSearch.stop[0]=results[num].x
+                locationSearch.stop[1]=results[num].y
+            }
+        })
+
+       
     });
 
     if (stop.value.length === 0){
@@ -105,71 +133,114 @@ stop.oninput = async (event) => {
 };
     
 
+var mapContainer = document.getElementById('map');
 
+//Basemaps support
+var mapboxAttribution='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+'Imagery © <a href="http://mapbox.com">Mapbox</a>'
 
-// var router=L.Routing.control({
-//     waypoints: [],
-//     lineOptions: {
-//         styles: [{color: 'purple', opacity: 0.7, weight: 3}]
-//     },
-//     routeWhileDragging: true,
-//     geocoder: L.Control.Geocoder.nominatim(),
-//     geocoderPlaceholder:(index,waypoint)=>{
+let accessToken='pk.eyJ1IjoiamVhZnJlZXp5IiwiYSI6ImNrYmpicjczYjBucjIyeGxzNGRjNHMxejEifQ.bY_8hqCiG-LBMG1xXreqdA';
 
-//         return ['From']
+var map = L.map('map',{
+    zoomControl:false,
+    minZoom:14,
+    zoom:17,
+    maxZoom:22,
+    center:[7.302952885790951,5.138908926692239] 
+});
 
-//     },
-//     collapsible:true,
-//     autoRoute:true,
-//     show:true,
-//     showAlternatives: true,
-//     altLineOptions: {
-//         styles: [
-//             {color: 'black', opacity: 0.15, weight: 9},
-//             {color: 'white', opacity: 0.8, weight: 6},
-//             {color: 'blue', opacity: 0.5, weight: 2}
-//         ]
-//         },
-//     createMarker:(i,wp,nwps)=>{
-    
-    
-//     if (i===0){ 
-        
-//         return L.marker(wp.latLng,{
+L.tileLayer(`https://api.mapbox.com/styles/v1/jeafreezy/ckgc141jb4ras19nwni4kvfct/tiles/256/{z}/{x}/{y}@2x?access_token=${accessToken}`,
 
-//             icon:startIcon
+{ 
+   tileSize: 512,
+   zoomOffset: -1,
+   maxZoom:22,
+   zoom:17,
+   minZoom:14,
+   attribution: mapboxAttribution
 
-//         }).bindPopup(message[0]).openPopup();
-
-//     }else{
-
-//         return L.marker(wp.latLng,{
-//             icon:destinationIcon
-//         }).bindPopup(message[1]).openPopup()
-//     }
-// }
-// }).addTo(map);
-
-        // // var myMovingMarker = L.Marker.movingMarker([startMarker,stopMarker],
-
-// 				// [20000]).addTo(map);
-//                 // myMovingMarker.start();
-//                 console.log(startMarker)
-//                 console.log(stopMarker)
-// router.on('routesfound',()=>{
-//     console.log(router.getWaypoints())
-// });
+}).addTo(map);
 
 
 //UTILITIES
 
+var startIcon = L.icon({
+    iconUrl: './assets/icons/icon1.png',
+    iconSize: [30, 30],
+    iconAnchor: [10, 10],
+    popupAnchor: [0, 0],
+    shadowUrl: './assets/icons/icon-shadow1.png',
+    shadowSize: [30, 30],
+    shadowAnchor: [10, 10]
+});
+
+var destinationIcon = L.icon({
+    iconUrl: './assets/icons/icon.png',
+    iconSize: [30, 30],
+    iconAnchor: [10, 10],
+    popupAnchor: [0, 0],
+    shadowUrl: './assets/icons/icon-shadow.png',
+    shadowSize: [30, 30],
+    shadowAnchor: [10, 10]
+});
+
+
 var clearSearch=document.getElementById('change');
 
 clearSearch.onclick=()=>{
-    start.value='';
-    stop.value='';
 
+    if(start.value.length > 1 && stop.value.length > 1){
+
+        console.log(locationSearch)
+        mapContainer.style.display='inline-block';
+
+        L.Routing.control({
+            waypoints: [
+                L.latLng(locationSearch.start[1], locationSearch.start[0]),
+                L.latLng(locationSearch.stop[1],locationSearch.stop[0])
+            ],
+            lineOptions: {
+                        styles: [{color: 'purple', opacity: 0.7, weight: 3}]
+                },
+            routeWhileDragging: true,
+            collapsible:true,
+            fitSelectedRoutes: false,
+            autoRoute:true,
+            show:true,
+            showAlternatives: true,
+            altLineOptions: {
+                styles: [
+                    {color: 'black', opacity: 0.15, weight: 9},
+                    {color: 'white', opacity: 0.8, weight: 6},
+                    {color: 'blue', opacity: 0.5, weight: 2}
+                    ]
+                 },
+            createMarker:(i,wp,nwps)=>{
+    
+                if (i===0){ 
+                    
+                    return L.marker(wp.latLng,{
+            
+                        icon:startIcon
+            
+                    }).bindPopup(start.value).openPopup();
+            
+                }else{
+            
+                    return L.marker(wp.latLng,{
+                        icon:destinationIcon
+                    }).bindPopup(stop.value).openPopup()
+                }
+            }
+            }).addTo(map);
+    }
+
+    // start.value='';
+    // stop.value='';
 }
+
+
 
 var backHome=document.getElementById('back-home');
 
