@@ -177,4 +177,4 @@ container.onmouseenter=(e)=>{
     console.log('entered')
 }
 
-// window.onload=()=>{introJs().start()};
+window.onload=()=>{introJs().start()};

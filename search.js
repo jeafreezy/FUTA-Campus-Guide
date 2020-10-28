@@ -275,3 +275,6 @@ stop.onblur=()=>{
   
 }
 
+clearSearch.setAttribute('data-intro','Then click here to get the route')
+
+window.onload=()=>{introJs().start()};

@@ -33296,5 +33296,7 @@ stop.onblur=()=>{
   
 }
 
+clearSearch.setAttribute('data-intro','Then click here to get the route')
 
+window.onload=()=>{introJs().start()};
 },{"./MovingMarker":1,"leaflet-geosearch":2,"leaflet-routing-machine":3}]},{},[5]);
