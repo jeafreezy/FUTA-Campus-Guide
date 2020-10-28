@@ -183,7 +183,7 @@ start.onblur=()=>{
         startResults.style.display='none';
         stop.style.display='inline-block';
         startResults.innerHTML='';
-    },100)
+    },200)
    
 }
 
@@ -193,6 +193,6 @@ stop.onblur=()=>{
     setTimeout(()=>{
         stopResults.style.display='none';
         stopResults.innerHTML='';
-    },100)
+    },200)
   
 }

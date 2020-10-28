@@ -281,4 +281,5 @@ input:checked + .slider:before {
   display: none;
   padding:7px;
   list-style-type: none;
+  cursor:pointer;
 }

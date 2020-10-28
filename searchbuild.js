@@ -14087,9 +14087,8 @@ const provider = new OpenStreetMapProvider({
     params: {
         countrycodes: 'ng',
         viewbox:[5.159025192260743,7.314114433544155,5.110745429992677,7.288488878494806],
-        email:'jolaiyaemmanuel@gmail.com',
         bounded:1,
-        limit:5
+        limit:3
     }
 });
 
@@ -14253,7 +14252,7 @@ start.onblur=()=>{
         startResults.style.display='none';
         stop.style.display='inline-block';
         startResults.innerHTML='';
-    },100)
+    },200)
    
 }
 
@@ -14263,7 +14262,7 @@ stop.onblur=()=>{
     setTimeout(()=>{
         stopResults.style.display='none';
         stopResults.innerHTML='';
-    },100)
+    },200)
   
 }
 },{"leaflet-geosearch":1}]},{},[3]);
