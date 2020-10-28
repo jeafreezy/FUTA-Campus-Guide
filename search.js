@@ -1,5 +1,6 @@
 const { GeoSearchControl,OpenStreetMapProvider } = require("leaflet-geosearch");
 require('leaflet-routing-machine');
+require('./MovingMarker');
 
 var home=document.getElementById('footer-search');
 
@@ -36,6 +37,7 @@ start.oninput = async (event) => {
 
     var results = await provider.search({ query: event.target.value });
 
+
     results.map((result,num)=>{
 
         stop.style.zIndex= -1;
@@ -47,7 +49,7 @@ start.oninput = async (event) => {
         startResults.style.display='inline-block';
         stop.style.display='none';
     });
- 
+     
  
     startResults.onclick=(e)=>{
 
@@ -192,10 +194,9 @@ clearSearch.onclick=()=>{
 
         var wayPoint1= L.latLng(locationSearch.start[1], locationSearch.start[0])
         var wayPoint2= L.latLng(locationSearch.stop[1],locationSearch.stop[0])
-        var bounds = L.latLngBounds(wayPoint1, wayPoint2);
-        mapContainer.style.display='inline-block';
-
-        L.Routing.control({
+        mapContainer.style.display='block';
+        map.invalidateSize();
+       var route = L.Routing.control({
             waypoints: [
                 wayPoint1,wayPoint2
             ],
@@ -204,7 +205,7 @@ clearSearch.onclick=()=>{
                 },
             routeWhileDragging: true,
             collapsible:true,
-            fitSelectedRoutes: false,
+            // fitSelectedRoutes: false,
             autoRoute:true,
             show:true,
             showAlternatives: true,
@@ -232,11 +233,18 @@ clearSearch.onclick=()=>{
                     }).bindPopup(stop.value).openPopup()
                 }
             }
-            }).addTo(map);
-    }
+            });
 
-    // start.value='';
-    // stop.value='';
+            route.on('routesfound',(e)=>{
+
+                var MovingMarker = L.Marker.movingMarker([wayPoint1,wayPoint2],
+                    [20000]).addTo(map);
+                    
+                MovingMarker.start();
+                
+            }).addTo(map);
+           
+    }
 }
 
 
@@ -266,3 +274,4 @@ stop.onblur=()=>{
     },200)
   
 }
+
