@@ -32713,11 +32713,8 @@ module.exports = L.Routing = {
 
 
 },{}],4:[function(require,module,exports){
-
-
 const { GeoSearchControl,OpenStreetMapProvider } = require("leaflet-geosearch");
-var {} =require('leaflet');
-var {} = require('leaflet-routing-machine');
+require('leaflet-routing-machine');
 
 var home=document.getElementById('footer-search');
 
@@ -32902,18 +32899,20 @@ var destinationIcon = L.icon({
 
 
 var clearSearch=document.getElementById('change');
+ 
 
 clearSearch.onclick=()=>{
 
     if(start.value.length > 1 && stop.value.length > 1){
 
-        console.log(locationSearch)
+        var wayPoint1= L.latLng(locationSearch.start[1], locationSearch.start[0])
+        var wayPoint2= L.latLng(locationSearch.stop[1],locationSearch.stop[0])
+        var bounds = L.latLngBounds(wayPoint1, wayPoint2);
         mapContainer.style.display='inline-block';
 
         L.Routing.control({
             waypoints: [
-                L.latLng(locationSearch.start[1], locationSearch.start[0]),
-                L.latLng(locationSearch.stop[1],locationSearch.stop[0])
+                wayPoint1,wayPoint2
             ],
             lineOptions: {
                         styles: [{color: 'purple', opacity: 0.7, weight: 3}]
@@ -32983,4 +32982,4 @@ stop.onblur=()=>{
   
 }
 
-},{"leaflet":3,"leaflet-geosearch":1,"leaflet-routing-machine":2}]},{},[4]);
+},{"leaflet-geosearch":1,"leaflet-routing-machine":2}]},{},[4]);
