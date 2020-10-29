@@ -59,6 +59,8 @@ NOTE: When you send PRs,kindy include your name in the Authors list below as wel
  * Switch routing machine to development version
 
  * Switch geocoder to a paid version or more reliable
+ 
+ * Improve UI/UX Experience
 
  * etc.
 
@@ -69,7 +71,7 @@ NOTE: When you send PRs,kindy include your name in the Authors list below as wel
 
 ## License
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Apache 2.0 License - see the [LICENSE.md](./LICENSE.MD) file for details
 
 ## Acknowledgments
 
