@@ -1,6 +1,7 @@
 # FUTA Campus Guide
 
-<img src='./assets/icons/youthmapper.jpg' style='width:43px'>
+![YouthMapperLogo](./assets/icons/youthmapper.jpg)
+
 
 ## A Campus Navigation Guide for Visitors and Freshers.
 
