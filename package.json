@@ -1,6 +1,7 @@
 {
-  "name": "FUTAGUIDE",
+  "name": "FUTA GUIDE",
   "version": "1.0.0",
+  "Author":"Jolaiya Emmanuel",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "leaflet": "^1.7.1",
     "leaflet-geosearch": "^3.0.6",
     "leaflet-routing-machine": "^3.2.12",
