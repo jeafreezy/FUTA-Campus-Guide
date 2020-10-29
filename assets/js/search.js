@@ -1,5 +1,5 @@
-// import require libraries
-
+// import required libraries
+require('dotenv').config()
 var { GeoSearchControl,OpenStreetMapProvider } = require("leaflet-geosearch");
 require('leaflet-routing-machine');
 require('../lib/MovingMarker');
@@ -11,7 +11,7 @@ var mapboxAttribution='Map data &copy; <a href="http://openstreetmap.org">OpenSt
 '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 'Imagery © <a href="http://mapbox.com">Mapbox</a>'
 
-var accessToken='pk.eyJ1IjoiamVhZnJlZXp5IiwiYSI6ImNrYmpicjczYjBucjIyeGxzNGRjNHMxejEifQ.bY_8hqCiG-LBMG1xXreqdA';
+var accessToken=process.env.ACCESS_TOKEN;
 
 var map = L.map('map',{
     zoomControl:false,
@@ -51,7 +51,7 @@ home.onclick=()=>{
     window.location.href='../index.html';
 }
 
-//An object for the location results coordinates,to be uplated after event is detected
+//An object for the location results coordinates,to be updated after event is detected
 
 var locationSearch={
 

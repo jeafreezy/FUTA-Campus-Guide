@@ -10,7 +10,7 @@ var mapboxAttribution='Map data &copy; <a href="http://openstreetmap.org">OpenSt
 '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 'Imagery © <a href="http://mapbox.com">Mapbox</a>'
 
-var accessToken='pk.eyJ1IjoiamVhZnJlZXp5IiwiYSI6ImNrYmpicjczYjBucjIyeGxzNGRjNHMxejEifQ.bY_8hqCiG-LBMG1xXreqdA';
+var accessToken=process.env.ACCESS_TOKEN;
 
 var map = L.map('map',{
     zoomControl:false,
