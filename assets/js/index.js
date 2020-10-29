@@ -195,13 +195,15 @@ layerControlContainer.setAttribute('data-intro','Click to change to satellite vi
 
 window.onload=()=>{
     introJs().start()
-    async function registerSW() { 
-        if ('serviceWorker' in navigator) { 
-          try {
-            await navigator.serviceWorker.register('../sw.js');
-          } catch (e) {
-            alert('ServiceWorker registration failed. Sorry about that.'); 
-          }
-        }
-      }
+    registerSW();
 };
+
+async function registerSW() {
+    if ('serviceWorker' in navigator) {
+      try {
+        await navigator.serviceWorker.register('../sw.js');
+      } catch (e) {
+        console.log(`SW registration failed`);
+      }
+    }
+  }

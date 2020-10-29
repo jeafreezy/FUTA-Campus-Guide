@@ -1,52 +1,49 @@
-
-const cacheName = 'pwa-futa-v1';
+ 
+const cacheName = 'futaguide-v1';
 const staticAssets = [
   './',
   './index.html',
-  './`build/build.js',
-  './assets/style/style.css'
+  './assets/style/style.css',
+  './builds/build.js',
+  './builds/searchbuild.js'
 ];
 
-self.addEventListener('install', async event => {
-    const cache = await caches.open(cacheName); 
-    await cache.addAll(staticAssets); 
-  });
 
-self.addEventListener('fetch', event => {
-    const req = event.request;
-    event.respondWith(cacheFirst(req));
+self.addEventListener('install', async e => {
+  const cache = await caches.open(cacheName);
+  await cache.addAll(staticAssets);
+  return self.skipWaiting();
+});
+
+self.addEventListener('activate', e => {
+  self.clients.claim();
+});
+
+self.addEventListener('fetch', async e => {
+  const req = e.request;
+  const url = new URL(req.url);
+
+  if (url.origin === location.origin) {
+    e.respondWith(cacheFirst(req));
+  } else {
+    e.respondWith(networkAndCache(req));
+  }
 });
 
 async function cacheFirst(req) {
-    const cache = await caches.open(cacheName); 
-    const cachedResponse = await cache.match(req); 
-    return cachedResponse || fetch(req); 
+  const cache = await caches.open(cacheName);
+  const cached = await cache.match(req);
+  return cached || fetch(req);
 }
 
-self.addEventListener('fetch', event => {
-    const req = event.request;
-  
-    if (/.*(json)$/.test(req.url)) {
-      event.respondWith(networkFirst(req));
-    } else {
-      event.respondWith(cacheFirst(req));
-    }
-  });
-
-  async function networkFirst(req) {
-    const cache = await caches.open(cacheName);
-    try { 
-      const fresh = await fetch(req);
-      cache.put(req, fresh.clone());
-      return fresh;
-    } catch (e) { 
-      const cachedResponse = await cache.match(req);
-      return cachedResponse;
-    }
+async function networkAndCache(req) {
+  const cache = await caches.open(cacheName);
+  try {
+    const fresh = await fetch(req);
+    await cache.put(req, fresh.clone());
+    return fresh;
+  } catch (e) {
+    const cached = await cache.match(req);
+    return cached;
   }
-
-  async function cacheFirst(req) {
-    const cache = await caches.open(cacheName);
-    const cachedResponse = await cache.match(req);
-    return cachedResponse || networkFirst(req);
-  }
+}

@@ -1,10 +1,10 @@
 {
     "theme_color": "#bd10e0",
     "background_color": "#bd10e0",
-    "display": "fullscreen",
-    "scope": "/",
-    "start_url": "/",
-    "app_name": "FUTA Guide",
+    "display": "standalone",
+    "scope": ".",
+    "start_url": ".",
+    "name": "FUTA Guide",
     "short_name": "Futa Nav",
     "description": "FUTA Campus Navigation guide",
     "icons": [
