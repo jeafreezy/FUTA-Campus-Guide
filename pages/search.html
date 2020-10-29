@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="manifest" href="./manifest.json">
 <head>
      <!-- Metatags  -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Welcome--FUTA Campus Guide</title>
+    <title>Search page</title>
 
     <!-- Primary Meta Tags -->
 
@@ -28,7 +27,6 @@
     <meta property="twitter:description" content="Welcome to FUTA Campus Guide. Let's help you navigate without hassle.">
     <meta property="twitter:image" content="https://futaguide.com/assets/icons/futalogo.png">
 
-    <link rel="shortcut icon" href="./assets/icons/futalogo.png" type="image/x-icon">
     <!-- Leaflet CDNs -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -39,52 +37,56 @@
         crossorigin="">
     </script>
 
-    <!-- Font awesome CDN for leaflet Locate Control library -->
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Geosearch control CSS-->
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"/>
-
-    <!-- Intro JS CDN for site tour -->
-    
+    <link rel="shortcut icon" href="../assets/icons/futalogo.png" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.0.1/intro.min.js" integrity="sha512-Y3bwrs/uUQhiNsD26Mpr5YvfG18EY0J+aNxYI7ZQPJlM9H+lElGpuh/JURVJR/NBE+p1JZ+sVE773Un4zQcagg==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.0.1/introjs.min.css" integrity="sha512-fsq7ym+bMq7ecs277R2a3QDPxF+JIwNNnkPfj9rIKDUyqrbXDnICZj/cCLcP3bKh3+jsCBnBR7BZJShOmELL0Q==" crossorigin="anonymous" />
-    
+
     <!-- custom style -->
-    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="../assets/style/style.css">
 
 </head>
 <body>
-    <!-- Map container -->
+    <!-- map container  -->
+    <div id="map" style="display: none;"></div>
 
-    <div id="map"></div>
+    <!-- Search bar container  -->
+        <div class="container" >
+            <img src="../assets/icons/back.png" id="back-home" data-intro='Click to go back to the home page'>
 
-    <!-- Toggle rounded switch -->
+            <!-- Icons beside the seach box  -->
+            <div class="icons">
+                <img src="../assets/icons/from.png">
+                <img src="../assets/icons/divider.png">
+                <img src="../assets/icons/destination.png">
+            </div>
 
-    <label class="switch" data-intro='Toggle to change to dark/light mode!'>
-        <input type="checkbox">
-        <span class="slider round" id='switcher'></span>
-    </label>
+            <!-- The search boxes  -->
+            <div class="search-bar" data-intro='Search for starting and destination location'>
 
-    <!-- Search result information container  -->
-    <div class="result" style="display: none;" id="location-found">
-        <img src="./assets/POIsImages/test.png">
-        <div>
-            <h3 id="location-name">Location Name</h3>
-            <h2 id='loc-address' style="font-weight: lighter; font-size: medium;">Location address</h2>
-            <p id="location-coordinate" style="font-weight: lighter;">Location Coordinate</p>
+                <input type="text" placeholder="From" id="startingPoint">
+                <div id="start-results">
+                </div>
+                <input type="text" placeholder="Your destination" id="destination">
+                <div id="stop-results">
+                </div>
+
+            </div>
+
+            <!-- Icon to find routes  -->
+            <div id="findRoute">
+                <img src="../assets/icons/change.png">
+            </div>
+           
         </div>
-    </div>
 
-    <footer id="footer-home" data-intro='Click here to go to the route page'>
+        
+    <footer id="footer-container" data-intro='Click to go back to home page'>
         <div class='symbol'></div>
-        <p>Where do you want to go?</p>
-        <p style="font-size: 11px;"> © 2020 Copyright: All right reserved  <a href="https://youthmappers.org" target="_blank"><img src="./assets/icons/youthmapperlogo.png"></a> <a href="https://twitter.com/YouthMapperFUTA">YouthMapperFUTA</a></p>
+        <p>Go back</p>
+        <p style="font-size: 11px;"> © 2020 Copyright: All right reserved  <a href="https://youthmappers.org" target="_blank"><img src="../assets/icons/youthmapperlogo.png"></a> <a href="https://twitter.com/YouthMapperFUTA">YouthMapperFUTA</a></p>
     </footer>
 
 
-    <script src="./builds/build.js"></script>
+    <script type="text/javascript" src="../builds/searchbuild.js"></script>
 </body>
 </html>

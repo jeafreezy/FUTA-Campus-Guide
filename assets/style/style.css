@@ -1,0 +1,338 @@
+*{
+  margin:0;
+  box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+
+/* Map style Begins */
+
+#map{
+   position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height:90%;
+}
+
+/* Map Style Ends */
+
+
+/* Footer style begins */
+
+footer{
+    left: 0%;
+    right: 0%;
+    cursor: pointer;
+    top: 90%;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    height: 5vh;
+    width:100%;
+    background: #FFFFFF;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+#footer-home{
+  cursor: pointer;
+}
+
+#findRoute{
+  cursor: pointer;
+}
+footer p{
+    text-align: center;
+    font-size: medium   ;
+    font-family: Proxima Nova;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #33085B;
+}
+
+.symbol{
+
+    background: #C4C4C4;
+    border-radius: 1px;
+    height: 2px;
+    position: relative;
+    margin-top: 4px;
+    margin-right: 40%;
+    margin-left: 40%;
+}
+
+/* footer style ends  */
+
+
+/* The switch - the box around the slider */
+
+.switch {
+    top:10px;
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 25px;
+}
+  
+  /* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    left: 5px;
+    right: 0;
+    bottom: 0;
+    background-color:purple;
+    -webkit-transition: .4s;
+    transition: .4s;
+    z-index: 11111;
+  }
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 1px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  input:checked + .slider {
+    background-color: black;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px black;
+  }
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(17px);
+    -ms-transform: translateX(17px);
+    transform: translateX(17px);
+  }
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+} 
+
+/* search result container style begins  */
+
+.result{
+  cursor: pointer;
+  margin-top: 80vh;
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 10px;
+  z-index: 1000000;
+  background: #FFFFFF;
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.result img{
+  width: 40px;
+  height: 40px;
+  padding:5px;
+  margin: 5px;
+  border-radius: 10px;
+  margin-right:15px;
+}
+
+.result h3 {
+     
+  margin-top: 5px;
+    
+}
+/* search result style ends */
+
+/* Search pagestyle begins */
+
+
+#footer-container{
+  cursor: pointer;
+}
+
+.container{
+
+  display: flex;
+  justify-content: center;
+  height: 20vh;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  padding:10px;
+}
+
+.icons{
+
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.icons img{
+  padding:2px;
+}
+
+#findRoute{
+
+  display: flex;
+  align-items: center;
+  margin-top: -50px;
+  margin-right: 40px;
+
+}
+
+#findRoute img{
+  width: 15px;
+  height: 15px;
+}
+.container >img{
+  width:20px;
+  height: 15px;
+}
+
+#back-home{
+  cursor: pointer;
+}
+.container input[type='text']{
+  padding:5px;
+  margin-top: 5px;
+  width: 220px;
+  height: 30px;
+  border: 0.5px solid rgba(189, 180, 180, 0.69);
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:black;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color:black;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+/* start input bos style begins  */
+
+#start-results{
+  position: relative;
+  border: 1px solid #d4d4d4;
+  width:200px;
+  font-size: 12px;
+  top:7%; 
+  cursor: pointer;
+  background-color: #fff;
+  border-top: none;
+  z-index: 10000;
+  display: none;
+  padding:7px;
+  list-style-type: none;
+}
+
+/* search results items style begins  */
+
+.result-items{
+ 
+  border-bottom: 1px solid #d4d4d4;
+  border-top: none;
+  z-index: 1000;
+  padding:5px;
+}
+
+.result-items:hover{
+
+  background-color: #e9e9e9;
+}
+
+
+/* destination result style begins   */
+#stop-results{
+
+  position: relative;
+  border: 1px solid #d4d4d4;
+  width:200px;
+  font-size: 12px;
+  top:7%; 
+  background-color: #fff;
+  border-top: none;
+  z-index: 10000;
+  display: none;
+  padding:7px;
+  list-style-type: none;
+  cursor:pointer;
+}
+
+/* responsiveness  */
+@media (min-width:570px){
+  #start-results{
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:200px;
+    display: none;
+  }
+
+  #stop-results{
+    justify-content: flex-end;
+    margin-left: 235  px;
+    flex-wrap: wrap;
+    width:200px;
+    display: none;
+  }
+
+  #findRoute{
+
+    display: flex;
+    align-items: center;
+    margin-top: -70px;
+    margin-right: 20px;
+
+  }
+}
