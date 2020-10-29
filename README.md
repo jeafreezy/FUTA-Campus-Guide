@@ -104,4 +104,4 @@ and everyone else who provided ideas to help make this project better.
 
  For the technical support and guidance.
 
-* Eric Vondee - [Email](<a href='mailto:ericvondee@protonmail.com' target='_blank'>)
+* Eric Vondee - Email: ericvondee@protonmail.com
