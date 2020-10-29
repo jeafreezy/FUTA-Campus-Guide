@@ -1,6 +1,7 @@
 # FUTA Campus Guide
 
-![gischatbot](assets/icons/futalogo.jpeg)
+<img src='./assets/icons/futalogo.jpeg' style='width:50px'>
+<img src='./assets/icons/youthmapper.jpg' style='width:43px'>
 
 ## A Campus Navigation Guide for Visitors and Freshers.
 
@@ -20,12 +21,6 @@
 * Geolocate 
 
 * More features would be seen during site tour.
-
-## Usage
-
-On the platform you can:
-
-Search from a starting point to a destination:
 
 
 ## Local Deployment
@@ -95,4 +90,4 @@ and everyone else who provided ideas to help make this project better.
 ## Special Mention
  For the technical support and guidance.
 
-* Eric Vondee - []()
+* Eric Vondee - [Email](ericvondee@protonmail.com)
