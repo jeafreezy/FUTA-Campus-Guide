@@ -1,6 +1,6 @@
 
 //Import required library
-
+require('dotenv').config()
 var {GeoSearchControl,OpenStreetMapProvider } = require( 'leaflet-geosearch');
 var _ =require('leaflet.locatecontrol');
 
