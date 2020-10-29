@@ -27,7 +27,7 @@
 
 To use on computer, ensure that you have node installed.
 
-Assign proper values to the environment variables in the .env file.
+Assign proper values to the Access_TOKEN variables in the js files. Create a free account on mapbox to get Access Token: [here](https://account.mapbox.com/)
 
 Run:
 
@@ -38,6 +38,17 @@ npm install
 
 Or open with VS Code [liverserver](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
 
+
+**Bundled with [browserify](http://browserify.org/)**
+
+## Libraries
+
+* [Leaflet JS](https://leafletjs.com/)
+* [Leaflet Moving Marker](https://github.com/ewoken/Leaflet.MovingMarker)
+* [Intro JS for site tour](https://introjs.com/)
+* [Leaflet Routing Machine](https://www.liedman.net/leaflet-routing-machine/)
+* [Leaflet Geosearch](https://github.com/smeijer/leaflet-geosearch)
+* [Mapbox Studio to style maps](https://www.mapbox.com/mapbox-studio/)
 
 ## Running the tests
 
@@ -58,14 +69,14 @@ NOTE: When you send PRs,kindy include your name in the Authors list below as wel
 
  * Switch routing machine to development version
 
- * Switch geocoder to a paid version or more reliable
+ * Switch geocoder to a paid version or more reliable and beautiful geocoding experience.
  
  * Improve UI/UX Experience
 
  * etc.
 
 
-## Developer:
+## Authors/Developers:
 
 **Jolaiya Emmanuel** - [Twitter](https://twitter.com/jeafreezy) <br>
 
@@ -93,4 +104,4 @@ and everyone else who provided ideas to help make this project better.
 
  For the technical support and guidance.
 
-* Eric Vondee - [Email](ericvondee@protonmail.com)
+* Eric Vondee - [Email](<a href='mailto:ericvondee@protonmail.com' target='_blank'>)
