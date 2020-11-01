@@ -65,8 +65,6 @@ NOTE: When you send PRs,kindy include your name in the Authors list below as wel
 
  * Convert to a native Mobile App
 
- * Enforce HTTPS
-
  * Switch routing machine to development version
 
  * Switch geocoder to a paid version or more reliable and beautiful geocoding experience.
